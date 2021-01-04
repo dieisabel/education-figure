@@ -9,12 +9,12 @@ void Figure::calculateCircle(Point points[], int startDegree, int endDegree)
 
     Point circlePoint = {_center.x + _figureWidth / 8,
                          _center.y - _figureWidth / 8};
-    float circleRadius = this->math->calculateDistance(circlePoint,
+    float circleRadius = calculateDistance(circlePoint,
                                                        this->_center);
 
     for (int i = 0; i < endDegree - startDegree; i++)
     {
-        radian = this->math->convertDegreesToRadian(tmp++);
+        radian = convertDegreesToRadian(tmp++);
         points[i].x = circleRadius * cos(radian) +
                                      this->_center.x;
         points[i].y = circleRadius * sin(radian) +
@@ -57,13 +57,13 @@ void Figure::calculateQuadrant(Point points[])
     points[5] = points[2];
     points[6] = {_center.x,
                  _center.y -
-                 math->calculateDistance(points[4], _center)};
+                 calculateDistance(points[4], _center)};
     points[7] = {_center.x +
-                 math->calculateDistance(points[4], _center),
+                 calculateDistance(points[4], _center),
                  _center.y -
-                 math->calculateDistance(points[4], _center)};
+                 calculateDistance(points[4], _center)};
     points[8] = {_center.x +
-                 math->calculateDistance(points[4], _center),
+                 calculateDistance(points[4], _center),
                  _center.y};
     points[9] = {_center.x + _figureWidth / 4 + _figureWidth / 12,
                  _center.y};
@@ -77,11 +77,11 @@ void Figure::calculateQuadrant(Point points[])
 
 void Figure::rotateQuadrant(Point points[], int size, int degree)
 {
-    float radian = this->math->convertDegreesToRadian(degree);
+    float radian = convertDegreesToRadian(degree);
 
     for (int i = 0; i < size; i++)
     {
-        points[i] = this->math->calculateRotatePosition(
+        points[i] = calculateRotatePosition(
                                             radian,
                                             this->_center,
                                             {points[i].x, points[i].y});
@@ -112,13 +112,13 @@ VertexArray Figure::createQuadrant()
 }
 
 
-Figure::Figure()
+Figure::Figure(Point center, int width, int height, Color color)
 {
-    _center = {250, 250};
-    _figureWidth = 300;
-    _figureHeight = 300;
+    _center = center;
+    _figureWidth = width;
+    _figureHeight = height;
     _degree = 0;
-    _color = Color::White;
+    _color = color;
 }
 
 Figure::~Figure()

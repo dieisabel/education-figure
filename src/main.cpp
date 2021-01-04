@@ -10,7 +10,7 @@ int main()
     RenderWindow window(VideoMode(500, 500), "Lab6");
     window.setFramerateLimit(60);
 
-    Figure figure;
+    Figure figure({250, 250}, 300, 300);
 
     while (window.isOpen())
     {

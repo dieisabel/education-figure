@@ -9,13 +9,11 @@
 #define _USE_MATH_DEFINES
 
 
-class Math
+namespace math
 {
-
-public:
     float convertDegreesToRadian(float degree);
     int calculateDistance(Point point_1, Point point_2);
     Point calculateRotatePosition(float degree, Point center, Point point);
-};
+}
 
 #endif

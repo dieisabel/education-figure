@@ -8,7 +8,7 @@
 #include "./utils/math.h"
 
 using namespace sf;
-
+using namespace math;
 
 class Figure
 {
@@ -22,8 +22,6 @@ private:
 
     int _degree;
 
-    Math *math;
-
     void calculateCircle(Point points[], int startDegree, int endDegree);
     VertexArray createCircle();
 
@@ -32,7 +30,7 @@ private:
     VertexArray createQuadrant();
 
 public:
-    Figure();
+    Figure(Point center, int width, int height, Color color=Color::White);
     ~Figure();
 
     void move(int offsetX, int offsetY);
